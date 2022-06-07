@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
 export const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
   align-items: center;
   justify-content: center;
