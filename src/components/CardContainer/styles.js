@@ -37,7 +37,7 @@ export const ButtonContainer = styled.div`
   }
 `;
 
-export const ButtonPagination = styled.button`
+const Button = styled.button`
   font-size: 17px;
   padding: 0.5em 2em;
   border: transparent;
@@ -56,4 +56,14 @@ export const ButtonPagination = styled.button`
   &:active {
     transform: translate(0em, 0.2em);
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: #cccc;
+  }
+
 `;
+
+export const ButtonPagination = ({ disabled, label }) => {
+  return <Button disabled={disabled}>{label}</Button>;
+}

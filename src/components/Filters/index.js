@@ -1,19 +1,18 @@
 import { FilterContainer } from "./styles";
 import { Button } from '../Button';
 import { useEffect, useState } from 'react';
-import axios from "axios";
 
-function Nav() {
+function Filters() {
 
+  const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_KEY}&language=pt-BR`;
   const [ genres, setGenres ] = useState([]);
 
   useEffect(() => {
-
-    axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=c7b9ab4663cccc7843d3f69cf1569353&language=pt-BR`).then((response) => {
-      setGenres(response.data.genres)
-    })
+    fetch(URL).then(res => res.json()).then(data => {
+      setGenres(data.genres)
+    });
  
-  }, [])
+  }, [URL])
 
   return (
     <FilterContainer>
@@ -36,4 +35,4 @@ function Nav() {
   )
 }
 
-export default Nav;
+export default Filters;

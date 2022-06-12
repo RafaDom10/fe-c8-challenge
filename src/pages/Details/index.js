@@ -1,19 +1,22 @@
- import axios from 'axios';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
- function Details() {
+function Details() {
   const { id } = useParams();
 
-    useEffect(() => {
-      axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=c7b9ab4663cccc7843d3f69cf1569353&language=pt-BR`).then(response => {
-        console.log(response);
-      })
-    }, [id]);
+  const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_KEY}&language=pt-BR`;
 
-   return (
-     <h1>Details</h1>
-   )
- }
+  useEffect(() => {
+    fetch(URL).then(res => res.json()).then(data => {
+      console.log(data)
+    });
+    
+  }, [URL]);
 
- export default Details;
+
+  return (
+    <h1>Details</h1>
+  )
+}
+
+export default Details;
