@@ -1,8 +1,7 @@
 import { useSearchParams, Link } from "react-router-dom";
 import { usePaginate } from '../../hooks/usePaginate';
 import {
-  Wrapper, GridContainer, MainCardContainer,
-  ButtonContainer, ButtonPagination
+  Wrapper, GridContainer, ButtonContainer, ButtonPagination
 } from "./styles";
 import Card from "./Card";
 
@@ -11,11 +10,11 @@ function CardContainer() {
   const posterPath = 'https://image.tmdb.org/t/p/w500/';
   const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_KEY}&language=pt-BR&`;
 
-  const [ searchParams ] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const { results, page, nextPage, prevPage } = usePaginate(URL, searchParams);
 
   return (
-    <MainCardContainer>
+    <>
       <Wrapper>
         <GridContainer>
           {
@@ -34,7 +33,7 @@ function CardContainer() {
 
       <ButtonContainer>
         <Link to={`?page=${prevPage}`}>
-          <ButtonPagination disabled={page === 1} label='Página Anterior'/>
+          <ButtonPagination disabled={page === 1} label='Página Anterior' />
         </Link>
         <p>{page}</p>
         <Link to={`?page=${nextPage}`}>
@@ -42,7 +41,7 @@ function CardContainer() {
         </Link>
       </ButtonContainer>
 
-    </MainCardContainer>
+    </>
   )
 }
 

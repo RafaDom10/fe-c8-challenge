@@ -17,12 +17,6 @@ export const GridContainer = styled.div`
   grid-row-gap: 70px;
 `;
 
-export const MainCardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
